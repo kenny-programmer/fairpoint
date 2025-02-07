@@ -17,12 +17,11 @@
             scroll-behavior: smooth;
         }
 
-        /* Apply ease-in transition to body and elements excluding nav */
         body {
             overflow-x: hidden;
         }
-        
-        .main-content{
+
+        .main-content {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 1s ease-in-out forwards;
@@ -90,6 +89,34 @@
             transform: translateY(-2px);
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger i {
+            font-size: 2rem;
+            color: #1e3a8a;
+        }
+
+        /* Mobile Menu */
+        .nav-links.active {
+            display: block;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: white;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
         /* Hero Section */
         .hero {
             text-align: center;
@@ -132,6 +159,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             transition: transform 0.3s ease-in-out;
+            max-width: 320px;
         }
 
         .contact-card i {
@@ -185,19 +213,44 @@
             outline: none;
         }
 
-        /* Responsive */
+        /* Responsive Styles */
         @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links a {
+                padding: 1.2rem;
+                font-size: 1.1rem;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .contact-info {
-                flex-direction: column;
+            .hero p {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
             }
 
-            .contact-card {
-                width: 100%;
-                max-width: 300px;
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            #openCalendly {
+                font-size: 1rem;
+                padding: 0.8rem 2rem;
             }
         }
     </style>
@@ -211,6 +264,9 @@
             <a href="Services.html">Services</a>
             <a href="About.html">About</a>
             <a href="ContactUs.html" class="contact-btn">Contact Us</a>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
         </div>
     </nav>
 
@@ -238,7 +294,6 @@
             </div>
 
             <div class="calendar-container">
-                <!-- Functional button with link -->
                 <a href="ContactUs.html">
                     <button id="openCalendly">Book a Meeting</button>
                 </a>
@@ -246,5 +301,12 @@
         </div>
     </section>
     </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
