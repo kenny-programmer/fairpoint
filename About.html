@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairpoint Accounting</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #2d3748;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
+        }
+
+        .nav-links a:not(.contact-btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-btn {
+            background: #0ea5e9;
+            color: white !important;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 165, 233, 0.2);
+        }
+
+        .contact-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 165, 233, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            background: linear-gradient(160deg, #f0f9ff 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* About Us Section */
+        .about {
+            padding: 6rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .about .section-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .about br {
+            margin-bottom: 2rem;
+        }
+
+        /* Mission and Vision Section */
+        .mission-vision {
+            padding: 6rem 2rem;
+            background: linear-gradient(160deg, #f0f9ff 0%, #e2e8f0 100%);
+            text-align: center;
+        }
+
+        .mission-vision .section-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .mission-vision .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .mission-vision .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 400px;
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .mission-vision .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-vision .card h3 {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .mission-vision .card p {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Company Values Section */
+        .values {
+            padding: 6rem 2rem;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .values .section-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .values .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .values .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .values .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .values .card h3 {
+            font-size: 1.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+
+        .values .card p {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Company History Section */
+        .history {
+            padding: 6rem 2rem;
+            background: linear-gradient(160deg, #f0f9ff 0%, #e2e8f0 100%);
+            text-align: center;
+        }
+
+        .history .section-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .history p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 1.5rem;
+            }
+
+            .about .section-title,
+            .mission-vision .section-title,
+            .values .section-title,
+            .history .section-title {
+                font-size: 2rem;
+            }
+
+            .about p,
+            .history p {
+                font-size: 1rem;
+                padding: 0 1.5rem;
+                text-align: center;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .mission-vision .card,
+            .values .card {
+                max-width: 100%;
+                margin: 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about .section-title,
+            .mission-vision .section-title,
+            .values .section-title,
+            .history .section-title {
+                font-size: 1.8rem;
+            }
+
+            .about p,
+            .history p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">FairPoint</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="Pricing.html">Team</a>
+            <a href="Services.html">Services</a>
+            <a href="About.html">About</a>
+            <a href="ContactUs.html" class="contact-btn">Contact Us</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About Us</h1>
+            <p>Fairpoint Consulting and Accounting offers expert tax, accounting, and consulting services. We're here whenever you need us to help your business succeed! We handle your numbers, so you can focus on growth.</p>
+        </div>
+    </section>
+
+    <section class="about">
+        <h2 class="section-title">About Our Company</h2>
+        <div class="hero-content">
+            <p>With over 20 years of experience in accounting and financial services, we've helped hundreds of businesses and individuals achieve their financial goals. Our team of certified professionals is dedicated to providing personalized solutions tailored to your specific needs.</p>
+            <br>
+            <p>We pride ourselves on staying current with the latest tax laws and accounting practices to ensure our clients receive the most accurate financial guidance possible.</p>
+            <br>
+            <p>Our clients benefit from a comprehensive suite of services that include tax preparation, financial planning, bookkeeping, and advisory.</p>
+            <br>
+        </div>
+    </section>
+
+    <section class="mission-vision">
+        <h2 class="section-title">Mission & Vision</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Mission Statement</h3>
+                <p>"To be a trusted partner in guiding clients toward financial success through fair, accurate, and insightful advice."</p>
+            </div>
+            <div class="card">
+                <h3>Vision Statement</h3>
+                <p>"To be the point of reference for clients seeking fair, accurate, and reliable financial solutions."</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <h2 class="section-title">Our Core Values</h2>
+        <div class="card-container">
+            <div class="card">
+                <h3>Flexibility</h3>
+                <p>We are adaptable and flexible, anticipating and responding effectively to changing client needs and market conditions.</p>
+            </div>
+            <div class="card">
+                <h3>Accuracy</h3>
+                <p>We ensure the accuracy and reliability of all our work, providing clients with sound and dependable financial insights.</p>
+            </div>
+            <div class="card">
+                <h3>Integrity</h3>
+                <p>We act with honesty and integrity in all our dealings, building trust and maintaining long-term relationships with clients.</p>
+            </div>
+            <div class="card">
+                <h3>Respect</h3>
+                <p>We value and respect the unique needs and perspectives of each client.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="history">
+        <h2 class="section-title">Our History</h2>
+        <div class="hero-content">
+            <p>United by a shared passion for accounting and a commitment to ethical practice, three former associates from a leading Philippine auditing firm, who were also roommates during their CPA exam preparation, founded Fairpoint. Starting with a few valued clients, the firm has steadily grown, earning their trust and building a strong reputation for providing fair, accurate, and insightful financial guidance.</p>
+            <br>
+            <p>Fairpoint was founded with a simple yet powerful vision: to provide clients with fair, accurate, and insightful financial guidance. Recognizing the need for trustworthy and ethical financial partners, we established our firm on a foundation of integrity, transparency, and client-centric values.</p>
+            <br>
+            <p>Since our inception, we have consistently strived to exceed client expectations by delivering high-quality financial services with a focus on fairness and accuracy. We have built strong relationships with our clients by providing personalized attention, insightful advice, and a commitment to their long-term success.</p>
+            <br>
+            <p>Fairpoint is committed to staying at the forefront of the evolving financial landscape. We continuously invest in professional development and leverage the latest technologies to ensure our clients receive the most effective and up-to-date financial solutions.</p>
+        </div>
+    </section>
+</body>
+</html>

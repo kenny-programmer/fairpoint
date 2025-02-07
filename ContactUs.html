@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fairpoint Accounting</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: #2d3748;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
+        }
+
+        .nav-links a:not(.contact-btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -6px;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .contact-btn {
+            background: #0ea5e9;
+            color: white !important;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 165, 233, 0.2);
+        }
+
+        .contact-btn:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 165, 233, 0.3);
+        }
+
+        /* Contact Section */
+        #contact {
+            padding: 5rem 2rem;
+            background-color: #ffffff;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f9fafb;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            animation: fadeIn 1.2s ease-in-out 0.2s forwards;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: #1e3a8a;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: #333;
+            background: #ffffff;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        button.submit-btn {
+            background-color: #0ea5e9;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button.submit-btn:hover {
+            background-color: #0284c7;
+        }
+
+        /* Animation for Fade In */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            #contact {
+                padding: 4rem 2rem;
+            }
+
+            .contact-form {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            .logo {
+                font-size: 1.6rem;
+            }
+
+            .nav-links {
+                gap: 1.2rem;
+            }
+
+            #contact {
+                padding: 3rem 2rem;
+            }
+
+            .contact-form {
+                width: 90%;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            input, textarea {
+                font-size: 0.95rem;
+                padding: 0.7rem;
+            }
+
+            button.submit-btn {
+                font-size: 1rem;
+                padding: 0.8rem 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .contact-form {
+                width: 100%;
+            }
+
+            input, textarea {
+                font-size: 0.9rem;
+                padding: 0.6rem;
+            }
+
+            button.submit-btn {
+                font-size: 0.95rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">FairPoint</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="Pricing.html">Team</a>
+            <a href="Services.html">Services</a>
+            <a href="About.html">About</a>
+            <a href="ContactUs.html" class="contact-btn">Contact Us</a>
+        </div>
+    </nav>
+
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <form class="contact-form" id="contact-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        // Initialize EmailJS
+        emailjs.init("p-Oy-pZdqm1yjiL5x");  // Replace with your user ID from EmailJS
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent page reload
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Send email using EmailJS
+            emailjs.send("roxas.vctr@gmail.com", "template_qj88a6u", {
+                from_name: name,
+                from_email: email,
+                message: message
+            })
+            .then(function(response) {
+                alert("Message sent successfully!");
+                document.getElementById('contact-form').reset();  // Reset form fields
+            }, function(error) {
+                alert("Failed to send message. Please try again.");
+            });
+        });
+    </script>
+</body>
+</html>
