@@ -3,53 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet the Team - FairPoint Consulting</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Fairpoint Accounting</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            scroll-behavior: smooth;
-        }
-        body {
-            overflow-x: hidden;
-        }
-        /* Separate transition effect only for the body content */
-        .main-content {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-in-out forwards;
         }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        body {
+            background-color: #f9fafb;
+            min-height: 100vh;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1.5rem 2rem;
             background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
-            animation: none; /* No transition or animation on the nav */
         }
 
         .logo {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: bold;
             color: #1e3a8a;
             text-decoration: none;
-            transition: transform 0.3s ease-in;
+            transition: transform 0.3s ease;
         }
 
         .logo:hover {
@@ -59,14 +44,22 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 0.75rem;
+            transition: all 0.3s ease;
             position: relative;
+        }
+
+        .nav-links a:not(.contact-btn) {
+            position: relative;
+            display: inline-block;
         }
 
         .nav-links a:not(.contact-btn)::after {
@@ -74,9 +67,11 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -4px;
-            left: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
             background-color: #0ea5e9;
+            transition: width 0.3s ease;
         }
 
         .nav-links a:not(.contact-btn):hover::after {
@@ -86,9 +81,9 @@
         .contact-btn {
             background: #0ea5e9;
             color: white !important;
-            padding: 0.7rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
+            padding: 0.6rem 1.25rem !important;
+            border-radius: 6px;
+            margin-left: 0.5rem;
         }
 
         .contact-btn:hover {
@@ -97,45 +92,80 @@
 
         .hamburger {
             display: none;
+            flex-direction: column;
+            gap: 4px;
             cursor: pointer;
         }
 
-        .hamburger i {
-            font-size: 2rem;
-            color: #1e3a8a;
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #1e3a8a;
+            border-radius: 5px;
         }
 
-        .nav-links.active {
-            display: block;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background-color: white;
-            width: 100%;
+        /* Services Section */
+        .services {
+            padding: 4rem 2rem;
+            background: linear-gradient(160deg, #f8fafc 0%, #f0f9ff 100%);
+        }
+
+        .section-title {
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 3rem;
         }
 
-        .nav-links a {
-            display: block;
-            padding: 1rem;
-            border-bottom: 1px solid #ddd;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            color: #1e3a8a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
         .team-header {
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 4rem 2rem 2rem;
             background: linear-gradient(160deg, #f8fafc 0%, #f0f9ff 100%);
         }
 
         .team-header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #1e3a8a;
+            margin-bottom: 1rem;
         }
 
         .team-header p {
-            font-size: 1.2rem;
             color: #64748b;
+            font-size: 1.1rem;
         }
 
         .team-grid {
@@ -143,75 +173,68 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 1rem;
+            margin: 2rem auto;
+            padding: 2rem;
         }
 
         .team-card {
             background: white;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             padding: 2rem;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
         }
 
         .team-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
 
         .team-card img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .team-card h2 {
-            font-size: 1.5rem;
             color: #1e3a8a;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
         }
 
         .team-card p {
-            font-size: 1rem;
             color: #64748b;
             font-style: italic;
+            line-height: 1.6;
         }
 
-        /* Responsive Styles */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
             }
 
             .hamburger {
-                display: block;
+                display: flex;
             }
 
-            .nav-links a {
-                padding: 1.2rem;
-                font-size: 1.1rem;
-            }
-
-            .team-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .team-header p {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .team-header h1 {
-                font-size: 2rem;
-            }
-
-            .team-header p {
-                font-size: 0.9rem;
+            .team-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
             }
         }
     </style>
@@ -219,58 +242,55 @@
 <body>
     <nav>
         <a href="index.html" class="logo">FairPoint</a>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="Team.html">Team</a>
-            <a href="Services.html">Services</a>
-            <a href="About.html">About</a>
-            <a href="ContactUs.html" class="contact-btn">Contact Us</a>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html">Home</a>
+            <a href="team.html">Team</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="contact-btn">Contact Us</a>
         </div>
     </nav>
 
-    <!-- Main Content with Transition Effect -->
-    <div class="main-content">
-        <header class="team-header">
-            <h1>Meet the Team</h1>
-            <p>Meet the team of FairPoint Consulting and Accounting.</p>
-        </header>
-        <section class="team-grid">
-            <div class="team-card">
-                <img src="placeholder.jpg" alt="Team Member">
-                <h2>John Doe</h2>
-                <p>"Innovation distinguishes between a leader and a follower."</p>
-            </div>
-            <div class="team-card">
-                <img src="placeholder.jpg" alt="Team Member">
-                <h2>Jane Smith</h2>
-                <p>"Success is not the key to happiness. Happiness is the key to success."</p>
-            </div>
-            <div class="team-card">
-                <img src="placeholder.jpg" alt="Team Member">
-                <h2>Michael Johnson</h2>
-                <p>"The only way to do great work is to love what you do."</p>
-            </div>
-            <div class="team-card">
-                <img src="placeholder.jpg" alt="Team Member">
-                <h2>Emily Davis</h2>
-                <p>"Believe in yourself and you will be unstoppable."</p>
-            </div>
-            <div class="team-card">
-                <img src="placeholder.jpg" alt="Team Member">
-                <h2>David Brown</h2>
-                <p>"Strive not to be a success, but rather to be of value."</p>
-            </div>
-        </section>
-    </div>
+    <section class="team-header">
+        <h1>Meet the Team</h1>
+        <p>Meet the team of FairPoint Consulting and Accounting.</p>
+    </section>
+
+    <section class="team-grid">
+        <div class="team-card">
+            <img src="placeholder.jpg" alt="Team Member">
+            <h2>John Doe</h2>
+            <p>"Innovation distinguishes between a leader and a follower."</p>
+        </div>
+        <div class="team-card">
+            <img src="placeholder.jpg" alt="Team Member">
+            <h2>Jane Smith</h2>
+            <p>"Success is not the key to happiness. Happiness is the key to success."</p>
+        </div>
+        <div class="team-card">
+            <img src="placeholder.jpg" alt="Team Member">
+            <h2>Michael Johnson</h2>
+            <p>"The only way to do great work is to love what you do."</p>
+        </div>
+        <div class="team-card">
+            <img src="placeholder.jpg" alt="Team Member">
+            <h2>Emily Davis</h2>
+            <p>"Every accomplishment begins with the decision to try."</p>
+        </div>
+    </section>
 
     <script>
-        function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
-        }
+        });
     </script>
 </body>
 </html>
