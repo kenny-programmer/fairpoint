@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meet the Team - FairPoint Consulting</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -16,16 +15,22 @@
             scroll-behavior: smooth;
         }
         body {
+            overflow-x: hidden;
+        }
+        /* Separate transition effect only for the body content */
+        .main-content {
             opacity: 0;
             transform: translateY(20px);
-            animation: fadeIn 1s ease-in-out forwards;
+            animation: fadeIn 0.8s ease-in-out forwards;
         }
+
         @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         nav {
             display: flex;
             justify-content: space-between;
@@ -36,7 +41,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            animation: none; /* No transition or animation on the nav */
         }
+
         .logo {
             font-size: 1.75rem;
             font-weight: bold;
@@ -44,21 +51,24 @@
             text-decoration: none;
             transition: transform 0.3s ease-in;
         }
+
         .logo:hover {
             transform: scale(1.05);
         }
+
         .nav-links {
             display: flex;
             align-items: center;
             gap: 2.5rem;
         }
+
         .nav-links a {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
-            transition: all 0.3s ease-in;
             position: relative;
         }
+
         .nav-links a:not(.contact-btn)::after {
             content: '';
             position: absolute;
@@ -67,35 +77,40 @@
             bottom: -4px;
             left: 0;
             background-color: #0ea5e9;
-            transition: width 0.3s ease-in;
         }
+
         .nav-links a:not(.contact-btn):hover::after {
             width: 100%;
         }
+
         .contact-btn {
             background: #0ea5e9;
             color: white !important;
             padding: 0.7rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
-            transition: all 0.3s ease-in;
         }
+
         .contact-btn:hover {
             background: #0284c7;
         }
+
         .team-header {
             text-align: center;
             padding: 4rem 1rem;
             background: linear-gradient(160deg, #f8fafc 0%, #f0f9ff 100%);
         }
+
         .team-header h1 {
             font-size: 3rem;
             color: #1e3a8a;
         }
+
         .team-header p {
             font-size: 1.2rem;
             color: #64748b;
         }
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -104,18 +119,20 @@
             margin: 4rem auto;
             padding: 0 1rem;
         }
+
         .team-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             padding: 2rem;
             text-align: center;
-            transition: transform 0.3s ease-in;
         }
+
         .team-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 12px rgba(0,0,0,0.1);
         }
+
         .team-card img {
             width: 100px;
             height: 100px;
@@ -123,11 +140,13 @@
             object-fit: cover;
             margin-bottom: 1rem;
         }
+
         .team-card h2 {
             font-size: 1.5rem;
             color: #1e3a8a;
             margin-bottom: 0.5rem;
         }
+
         .team-card p {
             font-size: 1rem;
             color: #64748b;
@@ -146,36 +165,40 @@
             <a href="ContactUs.html" class="contact-btn">Contact Us</a>
         </div>
     </nav>
-    <header class="team-header">
-        <h1>Meet the Team</h1>
-        <p>Meet the team of FairPoint Consulting and Accounting.</p>
-    </header>
-    <section class="team-grid">
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>John Doe</h2>
-            <p>"Innovation distinguishes between a leader and a follower."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>Jane Smith</h2>
-            <p>"Success is not the key to happiness. Happiness is the key to success."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>Michael Johnson</h2>
-            <p>"The only way to do great work is to love what you do."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>Emily Davis</h2>
-            <p>"Believe in yourself and you will be unstoppable."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>David Brown</h2>
-            <p>"Strive not to be a success, but rather to be of value."</p>
-        </div>
-    </section>
+
+    <!-- Main Content with Transition Effect -->
+    <div class="main-content">
+        <header class="team-header">
+            <h1>Meet the Team</h1>
+            <p>Meet the team of FairPoint Consulting and Accounting.</p>
+        </header>
+        <section class="team-grid">
+            <div class="team-card">
+                <img src="placeholder.jpg" alt="Team Member">
+                <h2>John Doe</h2>
+                <p>"Innovation distinguishes between a leader and a follower."</p>
+            </div>
+            <div class="team-card">
+                <img src="placeholder.jpg" alt="Team Member">
+                <h2>Jane Smith</h2>
+                <p>"Success is not the key to happiness. Happiness is the key to success."</p>
+            </div>
+            <div class="team-card">
+                <img src="placeholder.jpg" alt="Team Member">
+                <h2>Michael Johnson</h2>
+                <p>"The only way to do great work is to love what you do."</p>
+            </div>
+            <div class="team-card">
+                <img src="placeholder.jpg" alt="Team Member">
+                <h2>Emily Davis</h2>
+                <p>"Believe in yourself and you will be unstoppable."</p>
+            </div>
+            <div class="team-card">
+                <img src="placeholder.jpg" alt="Team Member">
+                <h2>David Brown</h2>
+                <p>"Strive not to be a success, but rather to be of value."</p>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
