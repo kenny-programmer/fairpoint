@@ -20,6 +20,20 @@
         body {
             background-color: #f9fafb;
             color: #2d3748;
+            overflow-x: hidden;
+        }
+
+        .main-content{
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Navigation Bar */
@@ -27,16 +41,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
+            padding: 1.2rem 5%;
             background: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #1e3a8a;
             text-decoration: none;
@@ -50,7 +64,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
@@ -367,13 +381,14 @@
         <a href="index.html" class="logo">FairPoint</a>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="Pricing.html">Team</a>
+            <a href="Team.html">Team</a>
             <a href="Services.html">Services</a>
             <a href="About.html">About</a>
             <a href="ContactUs.html" class="contact-btn">Contact Us</a>
         </div>
     </nav>
 
+    <div class="main-content">
     <section class="hero">
         <div class="hero-content">
             <h1>About Us</h1>
@@ -441,5 +456,6 @@
             <p>Fairpoint is committed to staying at the forefront of the evolving financial landscape. We continuously invest in professional development and leverage the latest technologies to ensure our clients receive the most effective and up-to-date financial solutions.</p>
         </div>
     </section>
+    </div>
 </body>
 </html>
