@@ -160,6 +160,50 @@
             background: #0284c7;
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 165, 233, 0.3);
+        }  
+
+        /*dropdown container*/
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /*dropdown btn*/
+        .dropbtn {
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: 500;
+            padding: 10px 15px;
+            display: inline-block;
+        }
+
+        /*dropdown content*/
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border-radius: 5px;
+        }
+
+        /*dropdown links*/
+        .dropdown-content a {
+            color: #1e3a8a;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        /*hover fx*/
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hero Section */
@@ -440,7 +484,15 @@
             <a href="index.html">Home</a>
             <a href="Team.html">Team</a>
             <a href="Services.html">Services</a>
-            <a href="About.html">About</a>
+            <div class="dropdown">
+                <a href="About.html" class="dropbtn">About</a>
+                <div class="dropdown-content">
+                    <a href="#company">Our Company</a>
+                    <a href="#mission-vision">Mission & Vision</a>
+                    <a href="#values">Core Values</a>
+                    <a href="#history">History</a>
+                </div>
+            </div>            
             <a href="ContactUs.html" class="contact-btn">Contact Us</a>
         </div>
     </nav>
@@ -453,7 +505,7 @@
         </div>
     </section>
 
-    <section class="about">
+    <section id="company" class="about">
         <h2 class="section-title">About Our Company</h2>
         <div class="hero-content">
             <p>With over 20 years of experience in accounting and financial services, we've helped hundreds of businesses and individuals achieve their financial goals. Our team of certified professionals is dedicated to providing personalized solutions tailored to your specific needs.</p>
@@ -465,7 +517,7 @@
         </div>
     </section>
 
-    <section class="mission-vision">
+    <section id="mission-vision" class="mission-vision">
         <h2 class="section-title">Mission & Vision</h2>
         <div class="card-container">
             <div class="card">
@@ -479,7 +531,7 @@
         </div>
     </section>
 
-    <section class="values">
+    <section id="values" class="values">
         <h2 class="section-title">Our Core Values</h2>
         <div class="card-container">
             <div class="card">
@@ -501,7 +553,7 @@
         </div>
     </section>
 
-    <section class="history">
+    <section id="history" class="history">
         <h2 class="section-title">Our History</h2>
         <div class="hero-content">
             <p>United by a shared passion for accounting and a commitment to ethical practice, three former associates from a leading Philippine auditing firm, who were also roommates during their CPA exam preparation, founded Fairpoint. Starting with a few valued clients, the firm has steadily grown, earning their trust and building a strong reputation for providing fair, accurate, and insightful financial guidance.</p>
@@ -531,6 +583,22 @@
             });
         });
     });
+    document.addEventListener("DOMContentLoaded", function() {
+        const dropdown = document.querySelector(".dropdown");
+        consţdropdownContent = document.querySelector(".dropdown-content");
+
+        dropdown.addEventListener("click", function (event) {
+            event.preventDefault();
+            dropdownContent.style.display = dropdownContent.style.display ===  "block" ? "none" : "block";
+        });
+
+        //Close dropdown if clicked outside
+        document.addEventListener("click", function (event) {
+            if (!dropdown.contains(event.target)) {
+                dropdownContent.style.display = "none";
+            }
+        })
+    })
 </script>
 </body>
 </html>
