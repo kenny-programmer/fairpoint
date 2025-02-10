@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fairpoint Accounting</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Global Styles */
@@ -15,6 +15,57 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             scroll-behavior: smooth;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #1e3a8a;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .hamburger{
+                display: flex;
+            }
+            .nav-links {
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.8s ease, transform 0.3s ease;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
+                background: white;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                padding: 2rem;
+                box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: flex;
+            }
         }
 
         body {
@@ -65,6 +116,7 @@
             display: flex;
             align-items: center;
             gap: 2.5rem;
+            transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .nav-links a {
@@ -379,6 +431,11 @@
 <body>
     <nav>
         <a href="index.html" class="logo">FairPoint</a>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="Team.html">Team</a>
@@ -457,5 +514,23 @@
         </div>
     </section>
     </div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.querySelector(".nav-links");
+        const links = document.querySelectorAll(".nav-links a");
+
+        hamburger.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+        });
+
+        links.forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+            });
+        });
+    });
+</script>
 </body>
 </html>

@@ -11,8 +11,24 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             scroll-behavior: smooth;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #1e3a8a;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
 
         body {
@@ -21,13 +37,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            opacity: 0;  /* Start with the body hidden */
-            transition: opacity 1s ease-in-out; /* Fade-in effect */
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
         body.loaded {
-            opacity: 1;  /* Make the body fully visible after loading */
+            opacity: 1;
         }
 
         nav {
@@ -37,42 +53,51 @@
             padding: 1.2rem 5%;
             background: white;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-            width: 100%;
             position: fixed;
             top: 0;
+            width: 100%;
             z-index: 1000;
             transform: translateY(-100%);
-            transition: transform 0.5s ease-in-out; /* Navigation slide-in */
+            transition: transform 0.5s ease-in-out;
         }
 
         body.loaded nav {
-            transform: translateY(0);  /* Show the nav bar */
+            transform: translateY(0);
         }
 
         .logo {
             font-size: 1.75rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #1e3a8a;
             text-decoration: none;
             transition: transform 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
         }
 
         .nav-links {
             display: flex;
             align-items: center;
             gap: 2.5rem;
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.3s ease;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 1rem;
             position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0ea5e9;
         }
 
         .nav-links a:not(.contact-btn)::after {
@@ -80,27 +105,30 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
             background-color: #0ea5e9;
             transition: width 0.3s ease;
         }
 
-        .nav-links a:not(.contact-btn):hover::after {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
         .contact-btn {
             background: #0ea5e9;
             color: white !important;
-            padding: 0.7rem 1.5rem;
+            padding: 0.8rem 2rem;
             border-radius: 8px;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 165, 233, 0.2);
         }
 
         .contact-btn:hover {
             background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 165, 233, 0.3);
         }
 
         .container {
@@ -111,20 +139,21 @@
             text-align: center;
             max-width: 500px;
             width: 90%;
-            margin-top: 80px;
+            margin-top: 100px;
             opacity: 0;
-            transform: translateY(20px); /* Initial position off-screen */
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade and slide in */
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
 
         body.loaded .container {
             opacity: 1;
-            transform: translateY(0); /* Bring the container into view */
+            transform: translateY(0);
         }
 
         h2 {
             color: #1e3a8a;
             margin-bottom: 1rem;
+            font-size: 1.75rem;
         }
 
         button {
@@ -143,6 +172,8 @@
 
         button:hover {
             background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 165, 233, 0.2);
         }
 
         .back-btn {
@@ -158,7 +189,6 @@
             color: #0ea5e9;
         }
 
-        /* Full-screen Calendly Popup */
         #calendly-overlay {
             position: fixed;
             top: 0;
@@ -171,12 +201,12 @@
             justify-content: center;
             z-index: 2000;
             opacity: 0;
-            transition: opacity 0.3s ease-in-out; /* Fade-in transition for the overlay */
+            transition: opacity 0.3s ease-in-out;
         }
 
         #calendly-overlay.visible {
             display: flex;
-            opacity: 1; /* Make overlay visible */
+            opacity: 1;
         }
 
         #calendly-container {
@@ -189,12 +219,12 @@
             position: relative;
             opacity: 0;
             transform: translateY(-30%);
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Popup fade-in and slide-up */
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
         #calendly-overlay.visible #calendly-container {
             opacity: 1;
-            transform: translateY(0); /* Bring the Calendly container into view */
+            transform: translateY(0);
         }
 
         .close-btn {
@@ -205,6 +235,7 @@
             color: #333;
             cursor: pointer;
             font-weight: bold;
+            z-index: 2001;
         }
 
         .close-btn:hover {
@@ -217,15 +248,71 @@
             border: none;
             border-radius: 10px;
         }
-        
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(-10px);
+                transition: opacity 0.8s ease, transform 0.3s ease;
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 1rem;
+                background: white;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                padding: 2rem;
+                box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .nav-links.active {
+                display: flex;
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .hamburger{
+                display: flex;
+            }
+
+            nav {
+                padding: 1.5rem 5%;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .container {
+                margin-top: 120px;
+            }
+        }
     </style>
 </head>
 <body class="loaded">
     <nav>
         <a href="index.html" class="logo">FairPoint</a>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="Pricing.html">Team</a>
+            <a href="Team.html">Team</a>
             <a href="Services.html">Services</a>
             <a href="About.html">About</a>
             <a href="ContactUs.html" class="contact-btn">Contact Us</a>
@@ -238,7 +325,6 @@
         <a href="index.html" class="back-btn">← Back to Home</a>
     </div>
 
-    <!-- Full-screen Calendly Popup -->
     <div id="calendly-overlay">
         <div id="calendly-container">
             <span class="close-btn" onclick="closeCalendly()">✖</span>
@@ -247,17 +333,52 @@
     </div>
 
     <script>
-        function openCalendly() {
-            document.getElementById("calendly-iframe").src = "https://calendly.com/roxas-vctr";
-            document.getElementById("calendly-overlay").classList.add("visible");
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const hamburger = document.getElementById("hamburger");
+            const navLinks = document.querySelector(".nav-links");
+            const links = document.querySelectorAll(".nav-links a");
 
-        function closeCalendly() {
-            document.getElementById("calendly-overlay").classList.remove("visible");
-            document.getElementById("calendly-iframe").src = "";
-        }
+            hamburger.addEventListener("click", function () {
+                navLinks.classList.toggle("active");
+                // Toggle hamburger animation
+                this.classList.toggle("active");
+            });
 
-        document.getElementById("openCalendly").addEventListener("click", openCalendly);
+            links.forEach(link => {
+                link.addEventListener("click", function () {
+                    navLinks.classList.remove("active");
+                    hamburger.classList.remove("active");
+                });
+            });
+
+            function openCalendly() {
+                document.getElementById("calendly-iframe").src = "https://calendly.com/vfranzroxas-cpa-fairpointca";
+                document.getElementById("calendly-overlay").classList.add("visible");
+                document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+            }
+
+            function closeCalendly() {
+                document.getElementById("calendly-overlay").classList.remove("visible");
+                document.getElementById("calendly-iframe").src = "";
+                document.body.style.overflow = "auto"; // Re-enable scrolling
+            }
+
+            document.getElementById("openCalendly").addEventListener("click", openCalendly);
+
+            // Close modal when clicking outside
+            document.getElementById("calendly-overlay").addEventListener("click", function(e) {
+                if (e.target === this) {
+                    closeCalendly();
+                }
+            });
+
+            // Close modal with Escape key
+            document.addEventListener("keydown", function(e) {
+                if (e.key === "Escape" && document.getElementById("calendly-overlay").classList.contains("visible")) {
+                    closeCalendly();
+                }
+            });
+        });
     </script>
 </body>
 </html>
