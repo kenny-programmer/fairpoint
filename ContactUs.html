@@ -15,32 +15,12 @@
             scroll-behavior: smooth;
         }
 
-<<<<<<< HEAD
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: #1e3a8a;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         body {
             background: linear-gradient(160deg, #f8fafc 0%, #f0f9ff 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-<<<<<<< HEAD
             min-height: 100vh;
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -48,7 +28,6 @@
 
         body.loaded {
             opacity: 1;
-=======
             height: 100vh;
             opacity: 0;  /* Start with the body hidden */
             transition: opacity 1s ease-in-out; /* Fade-in effect */
@@ -56,7 +35,6 @@
 
         body.loaded {
             opacity: 1;  /* Make the body fully visible after loading */
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         nav {
@@ -66,37 +44,28 @@
             padding: 1.2rem 5%;
             background: white;
             box-shadow: 0 2px 15px rgba(0,0,0,0.05);
-<<<<<<< HEAD
-=======
             width: 100%;
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
             transform: translateY(-100%);
-<<<<<<< HEAD
             transition: transform 0.5s ease-in-out;
         }
 
         body.loaded nav {
             transform: translateY(0);
-=======
             transition: transform 0.5s ease-in-out; /* Navigation slide-in */
         }
 
         body.loaded nav {
             transform: translateY(0);  /* Show the nav bar */
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         .logo {
             font-size: 1.75rem;
-<<<<<<< HEAD
             font-weight: 700;
-=======
             font-weight: bold;
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
             color: #1e3a8a;
             text-decoration: none;
             transition: transform 0.3s ease;
@@ -110,24 +79,18 @@
             display: flex;
             align-items: center;
             gap: 2.5rem;
-<<<<<<< HEAD
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
             transition: all 0.3s ease;
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         .nav-links a {
             text-decoration: none;
             color: #1e3a8a;
             font-weight: 500;
-<<<<<<< HEAD
             font-size: 1rem;
             position: relative;
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
             transition: all 0.3s ease;
             position: relative;
         }
@@ -168,35 +131,25 @@
             text-align: center;
             max-width: 500px;
             width: 90%;
-<<<<<<< HEAD
             margin-top: 100px;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-=======
             margin-top: 80px;
             opacity: 0;
             transform: translateY(20px); /* Initial position off-screen */
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Fade and slide in */
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         body.loaded .container {
             opacity: 1;
-<<<<<<< HEAD
             transform: translateY(0);
-=======
-            transform: translateY(0); /* Bring the container into view */
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         h2 {
             color: #1e3a8a;
             margin-bottom: 1rem;
-<<<<<<< HEAD
             font-size: 1.75rem;
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         button {
@@ -215,11 +168,8 @@
 
         button:hover {
             background: #0284c7;
-<<<<<<< HEAD
             transform: translateY(-2px);
             box-shadow: 0 4px 6px rgba(0, 165, 233, 0.2);
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         .back-btn {
@@ -233,7 +183,6 @@
 
         .back-btn:hover {
             color: #0ea5e9;
-<<<<<<< HEAD
         }
 
         #calendly-overlay {
@@ -346,29 +295,6 @@
             .container {
                 margin-top: 120px;
             }
-=======
-        }
-
-        /* Full-screen Calendly Popup */
-        #calendly-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out; /* Fade-in transition for the overlay */
-        }
-
-        #calendly-overlay.visible {
-            display: flex;
-            opacity: 1; /* Make overlay visible */
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         #calendly-container {
@@ -431,18 +357,10 @@
     
     <div class="container">
         <h2>Book a Meeting</h2>
-<<<<<<< HEAD
         <button id="openCalendly">Schedule a Meeting via Google Meet</button>
         <a href="index.html" class="back-btn">← Back to Home</a>
     </div>
 
-=======
-        <button id="openCalendly">Schedule a Meeting with us</button>
-        <a href="index.html" class="back-btn">← Back to Home</a>
-    </div>
-
-    <!-- Full-screen Calendly Popup -->
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
     <div id="calendly-overlay">
         <div id="calendly-container">
             <span class="close-btn" onclick="closeCalendly()">✖</span>
@@ -451,7 +369,6 @@
     </div>
 
     <script>
-<<<<<<< HEAD
         document.addEventListener("DOMContentLoaded", function () {
             const hamburger = document.getElementById("hamburger");
             const navLinks = document.querySelector(".nav-links");
@@ -498,19 +415,6 @@
                 }
             });
         });
-=======
-        function openCalendly() {
-            document.getElementById("calendly-iframe").src = "https://calendly.com/vfranzroxas-cpa-fairpointca";
-            document.getElementById("calendly-overlay").classList.add("visible");
-        }
-
-        function closeCalendly() {
-            document.getElementById("calendly-overlay").classList.remove("visible");
-            document.getElementById("calendly-iframe").src = "";
-        }
-
-        document.getElementById("openCalendly").addEventListener("click", openCalendly);
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
     </script>
 </body>
 </html>
