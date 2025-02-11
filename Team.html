@@ -21,16 +21,12 @@
         .main-content{
             opacity: 1;
             transform: translateY(20px);
-            animation: fadeIn 0.8s, ease-in-out forwards;
+            animation: fadeIn 0.8s ease-in-out forwards;
         }
 
         @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
 
         nav {
@@ -53,9 +49,7 @@
             transition: transform 0.3s ease;
         }
 
-        .logo:hover {
-            transform: scale(1.1);
-        }
+        .logo:hover { transform: scale(1.1); }
 
         .nav-links {
             display: flex;
@@ -70,9 +64,7 @@
             transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: #0ea5e9;
-        }
+        .nav-links a:hover { color: #0ea5e9; }
 
         .contact-btn {
             background: #0ea5e9;
@@ -81,8 +73,20 @@
             border-radius: 6px;
         }
 
-        .contact-btn:hover {
-            background: #0284c7;
+        .contact-btn:hover { background: #0284c7; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background: #1e3a8a;
+            transition: 0.3s;
         }
 
         /* Team Section */
@@ -98,25 +102,19 @@
             margin-bottom: 1rem;
         }
 
-        .team-header p {
-            color: #64748b;
-            font-size: 1.1rem;
-        }
+        .team-header p { color: #64748b; font-size: 1.1rem; }
 
-        /* Alternating Team Grid */
-        .team-container {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
             max-width: 1000px;
             margin: 2rem auto;
             padding: 2rem;
         }
 
-        .team-member {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+        .team-card {
+            text-align: center;
             background: white;
             padding: 1.5rem;
             border-radius: 12px;
@@ -129,18 +127,6 @@
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .team-member img {
-            width: 150px;
-            height: 150px;
-            border-radius: 12px;
-            object-fit: cover;
-        }
-
-        .team-info {
-            flex: 1;
-        }
-
-        .team-info h2 {
         .team-card img {
             width: 120px;
             height: 120px;
@@ -174,18 +160,9 @@
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             }
 
-            .nav-links.active {
-                display: flex;
-            }
+            .nav-links.active { display: flex; }
 
-            .hamburger {
-                display: flex;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
+            .hamburger { display: flex; }
         }
     </style>
 </head>
@@ -212,34 +189,15 @@
     </section>
 
     <section class="team-grid">
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>John Doe</h2>
-            <p>"Innovation distinguishes between a leader and a follower."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>Jane Smith</h2>
-            <p>"Success is not the key to happiness. Happiness is the key to success."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>Michael Johnson</h2>
-            <p>"The only way to do great work is to love what you do."</p>
-        </div>
-        <div class="team-card">
-            <img src="placeholder.jpg" alt="Team Member">
-            <h2>Emily Davis</h2>
-            <p>"Every accomplishment begins with the decision to try."</p>
-        </div>
+        <div class="team-card"><img src="placeholder.jpg" alt="Team Member"><h2>John Doe</h2><p>"Innovation distinguishes between a leader and a follower."</p></div>
+        <div class="team-card"><img src="placeholder.jpg" alt="Team Member"><h2>Jane Smith</h2><p>"Success is not the key to happiness. Happiness is the key to success."</p></div>
+        <div class="team-card"><img src="placeholder.jpg" alt="Team Member"><h2>John Doe</h2><p>"Innovation distinguishes between a leader and a follower."</p></div>
+        <div class="team-card"><img src="placeholder.jpg" alt="Team Member"><h2>Jane Smith</h2><p>"Success is not the key to happiness. Happiness is the key to success."</p></div>
     </section>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('nav-links').classList.toggle('active');
         });
     </script>
 </body>
