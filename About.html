@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fairpoint Accounting</title>
+    <link rel="icon" type="image/png" href=logo.png>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -445,6 +446,7 @@
             .values .section-title,
             .history .section-title {
                 font-size: 2rem;
+                display: block;
             }
 
             .about p,
@@ -502,10 +504,10 @@
                 <div class="dropdown">
                     <a href="About.html" class="dropbtn">About</a>
                     <div class="dropdown-content">
-                        <a href="#company">Our Company</a>
-                        <a href="#mission-vision">Mission & Vision</a>
-                        <a href="#values">Core Values</a>
-                        <a href="#history">History</a>
+                        <a href="About.html#company">Our Company</a>
+                        <a href="About.html#mission-vision">Mission & Vision</a>
+                        <a href="About.html#values">Core Values</a>
+                        <a href="About.html#history">History</a>
                     </div>
                 </div>            
                 <a href="ContactUs.html" class="contact-btn">Contact Us</a>
@@ -600,10 +602,9 @@
     });
     document.addEventListener("DOMContentLoaded", function() {
         const dropdown = document.querySelector(".dropdown");
-        consţdropdownContent = document.querySelector(".dropdown-content");
+        const dropdownContent = document.querySelector(".dropdown-content");
 
         dropdown.addEventListener("click", function (event) {
-            event.preventDefault();
             dropdownContent.style.display = dropdownContent.style.display ===  "block" ? "none" : "block";
         });
 
