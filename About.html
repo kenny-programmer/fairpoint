@@ -22,10 +22,7 @@
             flex-direction: column;
             gap: 4px;
             cursor: pointer;
-<<<<<<< HEAD
             z-index: 1001;
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         .hamburger div {
@@ -33,16 +30,12 @@
             height: 3px;
             background-color: #1e3a8a;
             border-radius: 5px;
-<<<<<<< HEAD
             transition: all 0.3s ease;
-=======
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
         }
 
         /* Media Queries for Mobile */
         @media (max-width: 768px) {
-<<<<<<< HEAD
-            .hamburger{
+            .hamburger {
                 display: flex;
             }
             .nav-links {
@@ -50,9 +43,6 @@
                 opacity: 0;
                 transform: translateY(-10px);
                 transition: opacity 0.8s ease, transform 0.3s ease;
-=======
-            .nav-links {
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
                 display: none;
                 flex-direction: column;
                 width: 100%;
@@ -84,7 +74,7 @@
             overflow-x: hidden;
         }
 
-        .main-content{
+        .main-content {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 0.8s ease-in-out forwards;
@@ -126,12 +116,6 @@
             display: flex;
             align-items: center;
             gap: 2.5rem;
-<<<<<<< HEAD
-=======
-            visibility: hidden;
-            opacity: 0;
-            transform: translateY(-10px);
->>>>>>> bd6906a8f443e78a17e35e95cf3569b9fdbe1e02
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
@@ -489,101 +473,102 @@
     </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">FairPoint</a>
-        <div class="hamburger" id="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="Team.html">Team</a>
-            <a href="Services.html">Services</a>
-            <div class="dropdown">
-                <a href="About.html" class="dropbtn">About</a>
-                <div class="dropdown-content">
-                    <a href="#company">Our Company</a>
-                    <a href="#mission-vision">Mission & Vision</a>
-                    <a href="#values">Core Values</a>
-                    <a href="#history">History</a>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">FairPoint</a>
+            <div class="hamburger" id="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="Team.html">Team</a>
+                <a href="Services.html">Services</a>
+                <div class="dropdown">
+                    <a href="About.html" class="dropbtn">About</a>
+                    <div class="dropdown-content">
+                        <a href="#company">Our Company</a>
+                        <a href="#mission-vision">Mission & Vision</a>
+                        <a href="#values">Core Values</a>
+                        <a href="#history">History</a>
+                    </div>
+                </div>            
+                <a href="ContactUs.html" class="contact-btn">Contact Us</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>About Us</h1>
+                <p>Fairpoint Consulting and Accounting offers expert tax, accounting, and consulting services. We're here whenever you need us to help your business succeed! We handle your numbers, so you can focus on growth.</p>
+            </div>
+        </section>
+
+        <section id="company" class="about">
+            <h2 class="section-title">About Our Company</h2>
+            <div class="hero-content">
+                <p>With over 20 years of experience in accounting and financial services, we've helped hundreds of businesses and individuals achieve their financial goals. Our team of certified professionals is dedicated to providing personalized solutions tailored to your specific needs.</p>
+                <br>
+                <p>We pride ourselves on staying current with the latest tax laws and accounting practices to ensure our clients receive the most accurate financial guidance possible.</p>
+                <br>
+                <p>Our clients benefit from a comprehensive suite of services that include tax preparation, financial planning, bookkeeping, and advisory.</p>
+                <br>
+            </div>
+        </section>
+
+        <section id="mission-vision" class="mission-vision">
+            <h2 class="section-title">Mission & Vision</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Mission Statement</h3>
+                    <p>"To be a trusted partner in guiding clients toward financial success through fair, accurate, and insightful advice."</p>
                 </div>
-            </div>            
-            <a href="ContactUs.html" class="contact-btn">Contact Us</a>
-        </div>
-    </nav>
+                <div class="card">
+                    <h3>Vision Statement</h3>
+                    <p>"To be the point of reference for clients seeking fair, accurate, and reliable financial solutions."</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="main-content">
-    <section class="hero">
-        <div class="hero-content">
-            <h1>About Us</h1>
-            <p>Fairpoint Consulting and Accounting offers expert tax, accounting, and consulting services. We're here whenever you need us to help your business succeed! We handle your numbers, so you can focus on growth.</p>
-        </div>
-    </section>
+        <section id="values" class="values">
+            <h2 class="section-title">Our Core Values</h2>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Flexibility</h3>
+                    <p>We are adaptable and flexible, anticipating and responding effectively to changing client needs and market conditions.</p>
+                </div>
+                <div class="card">
+                    <h3>Accuracy</h3>
+                    <p>We ensure the accuracy and reliability of all our work, providing clients with sound and dependable financial insights.</p>
+                </div>
+                <div class="card">
+                    <h3>Integrity</h3>
+                    <p>We act with honesty and integrity in all our dealings, building trust and maintaining long-term relationships with clients.</p>
+                </div>
+                <div class="card">
+                    <h3>Respect</h3>
+                    <p>We value and respect the unique needs and perspectives of each client.</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="company" class="about">
-        <h2 class="section-title">About Our Company</h2>
-        <div class="hero-content">
-            <p>With over 20 years of experience in accounting and financial services, we've helped hundreds of businesses and individuals achieve their financial goals. Our team of certified professionals is dedicated to providing personalized solutions tailored to your specific needs.</p>
-            <br>
-            <p>We pride ourselves on staying current with the latest tax laws and accounting practices to ensure our clients receive the most accurate financial guidance possible.</p>
-            <br>
-            <p>Our clients benefit from a comprehensive suite of services that include tax preparation, financial planning, bookkeeping, and advisory.</p>
-            <br>
+        <section id="history" class="history">
+            <h2 class="section-title">Our History</h2>
+            <div class="hero-content">
+                <p>United by a shared passion for accounting and a commitment to ethical practice, three former associates from a leading Philippine auditing firm, who were also roommates during their CPA exam preparation, founded Fairpoint. Starting with a few valued clients, the firm has steadily grown, earning their trust and building a strong reputation for providing fair, accurate, and insightful financial guidance.</p>
+                <br>
+                <p>Fairpoint was founded with a simple yet powerful vision: to provide clients with fair, accurate, and insightful financial guidance. Recognizing the need for trustworthy and ethical financial partners, we established our firm on a foundation of integrity, transparency, and client-centric values.</p>
+                <br>
+                <p>Since our inception, we have consistently strived to exceed client expectations by delivering high-quality financial services with a focus on fairness and accuracy. We have built strong relationships with our clients by providing personalized attention, insightful advice, and a commitment to their long-term success.</p>
+                <br>
+                <p>Fairpoint is committed to staying at the forefront of the evolving financial landscape. We continuously invest in professional development and leverage the latest technologies to ensure our clients receive the most effective and up-to-date financial solutions.</p>
+            </div>
+        </section>
         </div>
-    </section>
-
-    <section id="mission-vision" class="mission-vision">
-        <h2 class="section-title">Mission & Vision</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Mission Statement</h3>
-                <p>"To be a trusted partner in guiding clients toward financial success through fair, accurate, and insightful advice."</p>
-            </div>
-            <div class="card">
-                <h3>Vision Statement</h3>
-                <p>"To be the point of reference for clients seeking fair, accurate, and reliable financial solutions."</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="values" class="values">
-        <h2 class="section-title">Our Core Values</h2>
-        <div class="card-container">
-            <div class="card">
-                <h3>Flexibility</h3>
-                <p>We are adaptable and flexible, anticipating and responding effectively to changing client needs and market conditions.</p>
-            </div>
-            <div class="card">
-                <h3>Accuracy</h3>
-                <p>We ensure the accuracy and reliability of all our work, providing clients with sound and dependable financial insights.</p>
-            </div>
-            <div class="card">
-                <h3>Integrity</h3>
-                <p>We act with honesty and integrity in all our dealings, building trust and maintaining long-term relationships with clients.</p>
-            </div>
-            <div class="card">
-                <h3>Respect</h3>
-                <p>We value and respect the unique needs and perspectives of each client.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="history" class="history">
-        <h2 class="section-title">Our History</h2>
-        <div class="hero-content">
-            <p>United by a shared passion for accounting and a commitment to ethical practice, three former associates from a leading Philippine auditing firm, who were also roommates during their CPA exam preparation, founded Fairpoint. Starting with a few valued clients, the firm has steadily grown, earning their trust and building a strong reputation for providing fair, accurate, and insightful financial guidance.</p>
-            <br>
-            <p>Fairpoint was founded with a simple yet powerful vision: to provide clients with fair, accurate, and insightful financial guidance. Recognizing the need for trustworthy and ethical financial partners, we established our firm on a foundation of integrity, transparency, and client-centric values.</p>
-            <br>
-            <p>Since our inception, we have consistently strived to exceed client expectations by delivering high-quality financial services with a focus on fairness and accuracy. We have built strong relationships with our clients by providing personalized attention, insightful advice, and a commitment to their long-term success.</p>
-            <br>
-            <p>Fairpoint is committed to staying at the forefront of the evolving financial landscape. We continuously invest in professional development and leverage the latest technologies to ensure our clients receive the most effective and up-to-date financial solutions.</p>
-        </div>
-    </section>
-    </div>
-</body>
-<script>
+    <script>
     document.addEventListener("DOMContentLoaded", function () {
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.querySelector(".nav-links");
@@ -615,7 +600,7 @@
             }
         })
     })
-</script>
+    </script>
 </body>
 </html>
     
