@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: "ITC Avant Garde Gothic", "Avant Garde", sans-serif;
             scroll-behavior: smooth;
         }
 
@@ -121,6 +121,21 @@
 
         .contact-btn:hover {
             background: #0284c7;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background: #1e3a8a;
+            border-radius: 5px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .container {
@@ -265,7 +280,7 @@
                 left: 0;
                 padding: 2rem;
                 box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-                transition: transform 0.3s ease;
+                transition: opacity 0.5s ease, transform 0.5s ease;
             }
 
             .nav-links.active {
@@ -273,10 +288,6 @@
                 visibility: visible;
                 opacity: 1;
                 transform: translateY(0);
-            }
-            
-            .hamburger{
-                display: flex;
             }
 
             nav {
@@ -346,7 +357,7 @@
             <div></div>
             <div></div>
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="nav-links">
             <a href="index.html">Home</a>
             <a href="Team.html">Team</a>
             <a href="Services.html">Services</a>
@@ -369,51 +380,41 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const hamburger = document.getElementById("hamburger");
-            const navLinks = document.querySelector(".nav-links");
-            const links = document.querySelectorAll(".nav-links a");
+        // JavaScript for Hamburger Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
 
-            hamburger.addEventListener("click", function () {
-                navLinks.classList.toggle("active");
-                // Toggle hamburger animation
-                this.classList.toggle("active");
-            });
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-            links.forEach(link => {
-                link.addEventListener("click", function () {
-                    navLinks.classList.remove("active");
-                    hamburger.classList.remove("active");
-                });
-            });
+        //calendly
+        function openCalendly() {
+            document.getElementById("calendly-iframe").src = "https://calendly.com/vfranzroxas-cpa-fairpointca";
+            document.getElementById("calendly-overlay").classList.add("visible");
+            document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+        }
 
-            function openCalendly() {
-                document.getElementById("calendly-iframe").src = "https://calendly.com/vfranzroxas-cpa-fairpointca";
-                document.getElementById("calendly-overlay").classList.add("visible");
-                document.body.style.overflow = "hidden"; // Prevent scrolling when modal is open
+        function closeCalendly() {
+            document.getElementById("calendly-overlay").classList.remove("visible");
+            document.getElementById("calendly-iframe").src = "";
+            document.body.style.overflow = "auto"; // Re-enable scrolling
+        }
+
+        document.getElementById("openCalendly").addEventListener("click", openCalendly);
+
+        // Close modal when clicking outside
+        document.getElementById("calendly-overlay").addEventListener("click", function(e) {
+            if (e.target === this) {
+                closeCalendly();
             }
+        });
 
-            function closeCalendly() {
-                document.getElementById("calendly-overlay").classList.remove("visible");
-                document.getElementById("calendly-iframe").src = "";
-                document.body.style.overflow = "auto"; // Re-enable scrolling
+        // Close modal with Escape key
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" && document.getElementById("calendly-overlay").classList.contains("visible")) {
+                closeCalendly();
             }
-
-            document.getElementById("openCalendly").addEventListener("click", openCalendly);
-
-            // Close modal when clicking outside
-            document.getElementById("calendly-overlay").addEventListener("click", function(e) {
-                if (e.target === this) {
-                    closeCalendly();
-                }
-            });
-
-            // Close modal with Escape key
-            document.addEventListener("keydown", function(e) {
-                if (e.key === "Escape" && document.getElementById("calendly-overlay").classList.contains("visible")) {
-                    closeCalendly();
-                }
-            });
         });
     </script>
 </body>
